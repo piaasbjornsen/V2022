@@ -95,6 +95,61 @@
   * Transmission order of requested objects based on client-specified object priority (not necessarily FCFS)
   * push unrequested objects to client 
   * divide objects into frames, schedule frames to mitigate HOl blocking
-  * 
+
+# Sample SMTP interaction 
+# Mail access protocols 
+# DNS: Domain Name System
+* People: many identifiers: 
+  * SSN, name, passport #
+* Internet hosts, routers;
+  * IP address (32 bit) -used for addressing datagrams
+  * "name", e.g. cs.umass.edu - used by humans
+* Domain Name system:
+  * Distributed database implemented inhierarchy of many name servers
+  * Appliocation-layer protocol: hosts, name servers communicate to resolve names (address/name transalation)
+    * Note: core internet funciton, implemented as apllication-layer protocol 
+    * Complecity at networks "edge"
+
+## DNS: service, structure
+* DNS services 
+  * hostname to IP address translation 
+  * host aliasing
+    * canonical, alias names
+  * Mail server aliasing 
+  * Load distribution 
+    * Replicated Web servers_ many IP addresses correspond to one name
+
+## DNS_ a distributed, hierarchical database
+1. Root 
+2. Top level domain 
+3. authoritative 
+* Client wants IP address for www.amazon.com; 1st approximation
+  * client queries root server to find .com DNS server
+  * client queries .com DNS server to get amazon.com DNS server
+  * client queries amazon.com DNS server to get IP address for www.amazon.com 
+
+### DNS: root name servers
+* Official, contact-of-last-resort by name servers that can not resolve name
+* Incredibly importatnt Internet function
+  * Internet couldn't function without it!
+  * DNSSEC - provides security (authentication and message intergrity)
+* ICAAN (Internet Corporation for Assigned Names and Numbers)  manages root DNS domain
+
+### TLD: authoritative servers
+* Top-Level Domain servers:
+  * Responsible for .com, .org, .net, .edu, .earo, .jobs, .museums, and all top-level country domain, e.g.: .cn, .uk,
+.fr, .ca, .jp 
+  * Network Solutions: authoritative registry for .com, .net TLD 
+* Authoritative DNS servers: 
+  * organization's own DNS server(s), providing authoritative hostname to IP mapping for organization's named hosts 
+  * can be maintained by organization or services provider 
+  
+
+## DNS name resolution: iterated query 
+* Example: host at engineering.nyu,edu want Ip address for gaia.cs.umass.edu
+* Iterated query:
+  * Contacted server replies with name of server to contact 
+  * "I don't know this name, but ask this server"
+  
 
  

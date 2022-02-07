@@ -109,7 +109,7 @@ relasjonsklasse** til en annen (identifiserende) entitetklasse
 > relasjonsklassen (1,1), danner et "halvnøkkel-attributt" og relasjonsklassen tilsammen én nøkkel. 
 
 # Video 4(5) EER spesialisering
-* Standard Er, pluss
+* Standard ER, pluss
   * Støtte for spesialisering/generalisering
     * Subklasser/superklasser
   * Entitetsklasser med entiteter fra ulike entitetsklasser
@@ -157,5 +157,23 @@ relasjonsklasse** til en annen (identifiserende) entitetklasse
   * Total: dobbelstrek
     * Må være med i subklasse
 
-![Restriskjoner](Bilder/Restriksjoner.png)
+![Restriskjoner](../../Bilder/Restriksjoner.png)
+
+# Video 5 EER kategorier (Union typer)
+
+## Kategorier: Subklasser med flere superklasser
+* Mengden entiteter i en kategori er en delmangde av entiteter i superklassene
+* Kategorier kalles også for union-klasser, der U i sirkelen 
+
+## Notasjon
+* U inni sirkelen  
+
+## Kategorier: Restriksjoner, delvis/total
+* Delvis - Alle objekter i klassen trenger ikke være  med i kategoriklassen
+* Total - Alle objekter må vøre med i Kategoriern 
+
+## Oppsummering 
+* Hva er kategorier?
+* 
+
 
