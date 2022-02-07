@@ -1,0 +1,174 @@
+## What is network/information security?
+* Internet not originally designed woth (much) security in mind
+  * Original version: a group of mutually trusting users attached to a transparent network
+  * Inernet protocol designers playing "catch-up"
+  * There are security considerations in all layers
+* The field of network security is about 
+  * How bad guys can attack computer networks 
+  * How we can defend networks against attacjs
+  * How to design architectures that are immune to attacks 
+
+* Confidentiality: Information kept private and secure between sender and receivers 
+* Authentication: Sender and receiver want to confirm identity of each other
+* Message integrity: Sender and reciver want to endure massage not alterned (modified, deleted or added) in transit, or 
+afterwards without detection
+* Availability: Services must be accessible and available to whom requires them 
+
+## Network security - friends and enimies
+* web browser/server for electronic transactions (e.g. on-line purchases)
+* on-line banking client/server
+* DNS (domain name servers)
+* Routers exchanging routing table updates
+
+## Network security: There are bad guys (and girls) out there, and thay can
+* Eavesdrop: intercept massages
+* Actively insert massages into connection
+* Impersonate: Fake(spoof) source address in packet (or ant fiels in packet)
+* Hijack: "Take over" ongoing connection by removing senger or receiver, inserting himself in place
+* Deny service: prevent service from being used by others (e-g- by overloading resources)
+
+## Bad guys put malware into hosts via internett
+* Malware (malicious software) can get into host from a virus, worm, trojan horse or maliciouse URLs, often 
+self-repelcating: from an infected host seeks entry into other hosts
+* Spyware malware can record keystrokes, web sites visited, upload info to collection site 
+
+* Virus: infection of a object (e.g. e-mail attachment) actively executing, self-replicating 
+* Worm: Standalone software that gets itself executed independent of other files, self-replicating
+* Trojan horse: hidden part of some otherwise useful software, often a web page
+* Ransomeware: trojan/worm threatens to piblish the victim's data or perpetually block access to it unless a ransome is
+paid
+* Botnet: Sel-prpagating malware designed to infect a host and connect back to a central server or servers that act as a
+command and control center for an entire network of compromised devices, or "botnet"
+
+* Maliciouse URL
+  * contained in spam or phisihing messages, to download any type of malware to the affected computer
+* Infected host can be enrolled in a botnet, used for spam and distribute DoS attacks
+* "Zombie army" - owners unaware
+
+* Denial of Service (DoS): attackers make resources (server, bendwidth) unavailable to legitimate traffic by
+overwhelming resource with bogus traffic
+  1. Select target
+  2. break into hosts (e.g. botnet)
+  3. send packets toward target from compromised hosts
+
+## Bad guys can sniff packets 
+* Broadcast media (shared Ethernet, wireless)
+* Promiscuous network interface reads/records all traffic (including passwords) passing by
+
+## Bad guys can use spoofed source addresses
+* send packet with false source address og spoof URLs
+* IP spoofing used in combination with DOS attack
+
+
+# Chapter 2
+## Application layer: overview 
+* Principles of network applications 
+* Web and HTTP
+* E-mail, SMTP, IMAP
+* The domain name system DNS
+* P2P applications
+* Video streaming and content distribution networks
+* Socket programming with UDP and TCP
+
+* Our goals
+  * Conceptual and implementation aspect of applications-layer protocols
+    * Transport-layer service models
+    * Client-server paradigm 
+    * Peer-to-peer paradigm 
+    * Learn about protocols by examining popular applications-layer protocols
+      * HTTP
+      * SMTP, IAMP
+      * DNS
+    * Programming network applications
+      * socket API
+      
+## Some network apps
+* Social networking 
+* Web
+* text messaging
+* e-mail
+* multi-user network games
+* Streaming stored video
+* P2P file sharing 
+* Voice over IP
+* real-time video conferencing
+* Internet searh 
+* remote login
+* ...
+
+
+## Creating a network app
+* Write programs that:
+  * run on (differnet) nd systems
+  * Communicate over network
+  * e.g., web software communicates with browser software
+* No need to write software for networkcore deviced
+  * network-core devices do not run user applications
+  * applications on en systems allows for rapid app development, propagation 
+
+## Client-server paradigm
+* Server
+  * always-on host
+  * permanent IP address
+  * often in data center, for scaling
+* Clients:
+  * Contact, communicate with server
+  * may be intermittently connedted
+  * may have dynamic IP address
+  * do not communicate directly with each other
+  * E.g. HTTP, IMAP, FTP 
+
+## Peer-peer architecture
+* no always-on server
+* arbitrary end systems directly communicate 
+* peers request service from other peers provide service in return to other peers
+  * Self scalability - new peers bring new services capacity, as well as new service demands
+* Peers are intermittently connected and change IP addresses 
+  * Complex management
+
+## Process communicating
+* Process: program running within a host 
+* Within same host, two processes communicate using inter-process communication (defined by OS)
+* Processes in different hosts communicate by exchangig messages 
+
+## Sockets 
+* Process sends/receives messages to/from its socket
+* Socket analogous to door
+  * Sending process shoves message out door
+  * sending process relies on transport infrastructure on other side of door to deliver message to socket at receiving
+  process
+  * Two sockets involved: one on each side 
+
+## Addressing proceses
+* to recive messages, process must have identifier 
+* host device has unique 32-bit IP address
+* Does Ip address of host on which process runds suffice for identifying the process?
+  * No, many processes can be running on same host
+* Identifier includes both IP address aand port numbers associated with process on host
+
+ ## An application-layes protocol defines:
+* Types of messages exchenged 
+  * e.g. request, response
+* Message syntax
+  * What field is massage and how fields are delineated
+* Massage semantics
+  * meaning of information in field
+* Rules
+  * For when and how processes send and respond to messages
+* Open protocols
+  * Defines in RFCs, everyone has access to protocol definition 
+  * Allows for interoperability
+* Proprietary protocols 
+  * e.g. skype 
+
+## What transport service does an app need?
+* Data integrity
+  * Some apps (e.g. file transfer, web transactions) require 100% reliable data transfer
+  * other apps (e.g. audio) can tolerate som loss
+* Timing
+  * Some apps (e.g. Internet telephonu, interactive games) require low delay to be "effective"
+* Throughputs
+  * Some apps (e.g. multimedia) require minimum amount of throughput to be "effective"
+  * Other apps ("elastic apps") make use of whatever throughput thet get
+* Security 
+  * Encryption, data integrity 
